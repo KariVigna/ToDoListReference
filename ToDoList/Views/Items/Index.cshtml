@@ -3,6 +3,7 @@
 }
 
 @using ToDoList.Models;
+@using System;
 @model List<ToDoList.Models.Item>;
 
 <h1>Items</h1>
@@ -20,7 +21,7 @@ else
       <li>
         @Html.ActionLink($"{item.Description}", "Details", new { id = item.ItemId }) |
         @item.Category.Name |
-        @item.DueDate |
+        @item.DueDate.ToString($"dddd, MMMM dd{@thOrdinal} yyyy") 
         @if (@item.IsCompleted == false)
         {
           @Html.Raw("&#x2610;")
